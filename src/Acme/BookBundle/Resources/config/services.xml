@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+<!--     <services>
+        <service id="acme_book_author.form.author_create" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>book_author_author_create_form</argument>
+            <argument>acme_book_author_author_create_form</argument>
+        </service>
+
+        <service id="acme_book_author.form_type.author_create" class="Acme\BookBundle\Form\AffiliateCreate\AuthorType">
+            <tag name="form.type" alias="acme_book_author_author_create_form"/>
+        </service>
+
+        <service id="acme_book_author.form_handler.author_create" class="IC\Bundle\Base\ComponentBundle\Form\Handler\ComponentFormHandler" scope="request">
+            <argument type="service" id="acme_book_author.form.author_create" />
+            <argument type="service" id="request" />
+            <argument type="service" id="acme_book_author.form_service.author_create" />
+        </service>
+
+        <service id="acme_book_author.form_service.author_create" class="IC\Bundle\Affiliate\ProfileBundle\Form\Service\AffiliateCreateFormService">
+        </service>
+
+
+    </services>
+ --></container>
+

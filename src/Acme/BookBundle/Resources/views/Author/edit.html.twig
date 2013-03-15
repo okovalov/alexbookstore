@@ -1,0 +1,35 @@
+{% include 'AcmeBookBundle::base.html.twig' %}
+<h1>Author edit</h1>
+
+<form action="{{ path('author_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {#{ form_widget(edit_form) }#}
+    {{ form_label(edit_form.name) }} {{ form_widget(edit_form.name) }} {{ form_errors(edit_form.name) }} <br>
+    {{ form_label(edit_form.website) }} {{ form_widget(edit_form.website) }} {{ form_errors(edit_form.website) }}<br>
+    {{ form_label(edit_form.email) }} {{ form_widget(edit_form.email) }} {{ form_errors(edit_form.email) }}<br>
+    <hr>
+    Novels<br>
+    {{ form_widget(edit_form.books_novels) }} {{ form_errors(edit_form.books_novels) }}<br>
+    Other<br>
+    {# form_widget(form2.books) }} {{ form_errors(form2.books) #}<br>
+
+    {{ form_widget(edit_form.books_not_novels) }} {{ form_errors(edit_form.books_not_novels) }}<br>
+    <br>
+    {{ form_rest(edit_form) }}
+    <p>
+        <button type="submit">Save</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('author') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
