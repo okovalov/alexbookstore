@@ -1,0 +1,23 @@
+127.0.0.1   localhost
+
+# Roles
+127.0.1.1   database database.dev
+127.0.1.1   static static.dev
+127.0.1.1   application-cache application-cache.dev
+127.0.1.1   application application.dev
+127.0.1.1   esi-cache esi-cache.dev
+127.0.1.1   documentation documentation.dev
+127.0.1.1   all-in-one all-in-one.dev
+
+# Sites
+127.0.1.1   admin admin.dev
+127.0.1.1   demo demo.dev
+127.0.1.1   seo seo.dev
+127.0.1.1   hook hook.dev
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
