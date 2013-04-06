@@ -13,8 +13,8 @@ class BookType extends AbstractType
         $builder
             ->add('name')
             ->add('price')
-            ->add('color',null)
-            ->add('isNovell')
+            ->add('color','text',array('required'=>false,'data'=>'-'))
+            ->add('isNovell','checkbox',array('required'=>false,'data'=>false))
         ;
     }
 

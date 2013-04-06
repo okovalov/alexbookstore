@@ -1,35 +1,48 @@
 {% include 'AcmeBookBundle::base.html.twig' %}
 <h1>Author edit</h1>
 
+
 <form action="{{ path('author_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {#{ form_widget(edit_form) }#}
-    {{ form_label(edit_form.name) }} {{ form_widget(edit_form.name) }} {{ form_errors(edit_form.name) }} <br>
-    {{ form_label(edit_form.website) }} {{ form_widget(edit_form.website) }} {{ form_errors(edit_form.website) }}<br>
-    {{ form_label(edit_form.email) }} {{ form_widget(edit_form.email) }} {{ form_errors(edit_form.email) }}<br>
-    <hr>
-    Novels<br>
-    {{ form_widget(edit_form.books_novels) }} {{ form_errors(edit_form.books_novels) }}<br>
-    Other<br>
-    {{ form_widget(edit_form.books_not_novels) }} {{ form_errors(edit_form.books_not_novels) }}<br>
-    Other2<br>
-    {{ form_widget(edit_form.books_not_novels) }} {{ form_errors(edit_form.books_not_novels) }}<br>
-    <br>
+    <table>
+        <tr>
+            <td>{{ form_label(edit_form.name) }}</td>
+            <td>{{ form_widget(edit_form.name) }} {{ form_errors(edit_form.name) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.website) }}</td>
+            <td>{{ form_widget(edit_form.website) }} {{ form_errors(edit_form.website) }}</td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td>{{ form_widget(edit_form.email) }} {{ form_errors(edit_form.email) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.books_novels) }}</td>
+            <td>{{ form_widget(edit_form.books_novels) }} {{ form_errors(edit_form.books_novels) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.books_not_novels) }}</td>
+            <td>{{ form_widget(edit_form.books_not_novels) }} {{ form_errors(edit_form.books_not_novels) }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Save</button>
+                <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
+                    {{ form_widget(delete_form) }}
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {#
+        <tr>
+            <td>xxx</td>
+            <td>xxx</td>
+        </tr>
+        #}
+    </table>
     {{ form_rest(edit_form) }}
+
     <p>
-        <button type="submit">Save</button>
+        
     </p>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('author') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>

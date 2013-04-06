@@ -72,11 +72,11 @@ class AuthorController extends Controller
      */
     public function newAction()
     {
-        $entity = new Author();
-        $form   = $this->createForm(new AuthorType(), $entity);
+        $model  = new AuthorUpdateFormModel();
+        //$entity = new Author();
+        $form   = $this->createForm(new AuthorUpdateFormType(), $model);
 
         return array(
-            'entity' => $entity,
             'form'   => $form->createView(),
         );
     }
@@ -91,8 +91,25 @@ class AuthorController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Author();
-        $form = $this->createForm(new AuthorType(), $entity);
+
+        $model  = new AuthorUpdateFormModel();
+        $form = $this->createForm(new AuthorUpdateFormType(), $model);
         $form->bind($request);
+
+        $entity->setName($model->getName());
+        $entity->setEmail($model->getEmail());
+        $entity->setWebsite($model->getWebsite());
+
+        $booksNovels = $model->getBooksNovels();
+        $booksNotNovels = $model->getBooksNotNovels();
+        $books = new ArrayCollection();
+        foreach ($booksNovels as $book) {
+            $books->add($book);
+        }
+        foreach ($booksNotNovels as $book) {
+            $books->add($book);
+        }
+        $entity->setBooks($books);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

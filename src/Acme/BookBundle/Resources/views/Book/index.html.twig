@@ -1,7 +1,13 @@
 {% include 'AcmeBookBundle::base.html.twig' %}
 
 <h1>Book list</h1>
-
+<ul>
+    <li>
+        <a href="{{ path('book_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
 <table class="records_list">
     <thead>
         <tr>
@@ -9,6 +15,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Color</th>
+            <th>is Novell</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -19,6 +26,7 @@
             <td>{{ entity.name }}</td>
             <td>{{ entity.price }}</td>
             <td>{{ entity.color }}</td>
+            <td align="center">{% if entity.isNovell == 1 %}Yes{% else %}No{% endif %}</td>
             <td>
                 <ul>
                     <li>
@@ -38,11 +46,6 @@
     <li>
         <a href="{{ path('book_new') }}">
             Create a new entry
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('author') }}">
-            List of authors
         </a>
     </li>
 </ul>
