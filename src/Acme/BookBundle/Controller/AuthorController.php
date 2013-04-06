@@ -8,13 +8,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Acme\BookBundle\Entity\Author;
-use Acme\BookBundle\Form\AuthorType;
+//use Acme\BookBundle\Form\AuthorType;
 use Acme\BookBundle\Form\Type\AuthorUpdateFormType;
 
-use Acme\BookBundle\Form\Model\AuthorCreateFormModel;
+//use Acme\BookBundle\Form\Model\AuthorCreateFormModel;
 use Acme\BookBundle\Form\Model\AuthorUpdateFormModel;
 
-use Acme\BookBundle\Form\AuthorOtherType;
+//use Acme\BookBundle\Form\AuthorOtherType;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Author controller.
