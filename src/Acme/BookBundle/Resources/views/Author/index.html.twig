@@ -19,14 +19,8 @@
             <td>{{ entity.email }}</td>
             <td>{{ entity.website }}</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('author_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('author_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <a href="{{ path('author_show', { 'id': entity.id }) }}"><img src="{{ asset('bundles/acmedemo/images/view.png') }}" title="Show" alt="Show"></a>
+                <a href="{{ path('author_edit', { 'id': entity.id }) }}"><img src="{{ asset('bundles/acmedemo/images/edit.png') }}" title="Edit" alt="Edit"></a>
             </td>
         </tr>
     {% endfor %}
