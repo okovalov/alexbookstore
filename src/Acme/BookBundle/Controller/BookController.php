@@ -67,7 +67,9 @@ class BookController extends Controller
     public function newAction()
     {
         $entity = new Book();
-        $form   = $this->createForm(new BookType(), $entity);
+        $form   = $this->createForm(new BookType(), $entity, array(
+            'em' => $this->getDoctrine()->getEntityManager(),
+        ));
 
         return array(
             'entity' => $entity,
@@ -85,7 +87,9 @@ class BookController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Book();
-        $form = $this->createForm(new BookType(), $entity);
+        $form = $this->createForm(new BookType(), $entity, array(
+            'em' => $this->getDoctrine()->getEntityManager(),
+        ));
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -118,7 +122,14 @@ class BookController extends Controller
             throw $this->createNotFoundException('Unable to find Book entity.');
         }
 
-        $editForm = $this->createForm(new BookType(), $entity);
+        // echo '<pre>';
+        // \Doctrine\Common\Util\Debug::dump($entity,2);
+        // echo '</pre>';
+        // die('');
+
+        $editForm = $this->createForm(new BookType(), $entity, array(
+            'em' => $this->getDoctrine()->getEntityManager(),
+        ));
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -146,8 +157,26 @@ class BookController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new BookType(), $entity);
+        $editForm = $this->createForm(new BookType(), $entity, array(
+            'em' => $this->getDoctrine()->getEntityManager(),
+        ));
         $editForm->bind($request);
+
+        // $temp = $form->
+        // $entity->setCategories();
+        // echo '<pre>';
+        // \Doctrine\Common\Util\Debug::dump($editForm->get('categories')->getData(),1);
+        // echo '</pre>';
+        // die('');
+
+        // $a = $editForm->get('categories')->getData();
+        // $categories = new \Doctrine\Common\Collections\ArrayCollection();
+        // if (is_null($a)===false) {
+        //     $categories[] = $a;
+        // }
+        // if ($categories) {
+        //     $entity->setCategories($categories);
+        // }
 
         if ($editForm->isValid()) {
             $em->persist($entity);

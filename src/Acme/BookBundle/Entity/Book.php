@@ -49,13 +49,24 @@ class Book
     */
     protected $isNovell;
 
-    /**
+    /** 
     * @var \Doctrine\Common\Collection\ArrayCollection $authors
     *
     * @ORM\ManyToMany(targetEntity="Acme\BookBundle\Entity\Author", mappedBy="books")
     */
     protected $authors;
 
+    /**
+    * @var \Doctrine\Common\Collection\ArrayCollection $categories
+    *
+    * @ORM\ManyToMany(targetEntity="Acme\BookBundle\Entity\Category", inversedBy="books")
+    * @ORM\JoinTable(
+    *   name="category_book"
+    *   ,joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+    *   ,inverseJoinColumns={@ORM\JoinColumn(name="book_id",referencedColumnName="id")}
+    * )
+    */
+    protected $categories;
 
     /**
      * Get id
@@ -73,6 +84,7 @@ class Book
     public function __construct()
     {
         $this->authors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -207,4 +219,46 @@ class Book
         return $this->authors;
     }
 
+    /**
+     * Add category
+     *
+     * @param \Acme\BookBundle\Entity\Category $category
+     * @return Level
+     */
+    public function addCategory(\Acme\BookBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Acme\BookBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Acme\BookBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Set categories
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
 }
